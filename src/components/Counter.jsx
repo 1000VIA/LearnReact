@@ -2,21 +2,43 @@ import React, { Component, Fragment } from "react";
 
 class Counter extends Component {
   state = {
-    conunt: 0,
-    tags: []
+    value: this.props.value
+
   };
 
-  //   formatCount() {
-  //     const { conunt } = this.state;
+  handleIncrement = () => {
+    this.setState({
+      value: this.state.value + 1
+    })
+  }
 
-  //     return conunt === 0 ? "Zero" : conunt;
-  //   }
+  render() {
+    return (
+      <Fragment>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm">Increment</button>
 
-  //   getBadgeClasses() {
-  //     let classes = "badge m-3 badge-";
-  //     classes += this.state.conunt === 0 ? "success" : "primary";
-  //     return classes;
-  //   }
+        <button
+          onClick={() => this.props.onDelete(this.props.id)}
+          className="btn btn-danger btn-sm m-2">Delete
+        </button>
+      </Fragment >
+    );
+  }
+
+  formatCount() {
+    const { value } = this.state;
+
+    return value === 0 ? "Zero" : value;
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-3 badge-";
+    classes += this.state.value === 0 ? "success" : "primary";
+    return classes;
+  }
 
   renderTag() {
     if (this.state.tags.length === 0) return <p>There are no tags!</p>;
@@ -32,16 +54,6 @@ class Counter extends Component {
     );
   }
 
-  render() {
-    return (
-      <Fragment>
-        {/* <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button> */}
-        {this.state.tags.length === 0 && "Plase create a new tag!"}
-        {this.renderTag()}
-      </Fragment>
-    );
-  }
 }
 
 export default Counter;

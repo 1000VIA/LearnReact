@@ -1,14 +1,18 @@
 import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
-import Counter from "./components/Counter";
+// import Counter from "./components/Counter";
+import Counters from './components/Counters'
 
 function App() {
-  return (
-    <div className="App">
-      <Counter />
-    </div>
-  );
+    return ( <
+        div className = "App" >
+        <
+
+        Counters / >
+        <
+        /div>
+    );
 }
 
 export default App;
